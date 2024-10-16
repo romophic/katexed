@@ -1,6 +1,6 @@
 "use client"; // 必須
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { BlockMath, InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import MonacoEditor, { loader } from "@monaco-editor/react";
