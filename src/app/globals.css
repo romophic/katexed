@@ -25,3 +25,17 @@ body {
     text-wrap: balance;
   }
 }
+
+.katex {
+  font-size: 1.2em; /* フォントサイズを調整 */
+}
+
+.katex .frac {
+  display: inline-block; /* 表示形式を調整 */
+  vertical-align: middle; /* 垂直位置を調整 */
+  position: relative; /* 位置を相対的にする */
+}
+
+.katex .frac > span {
+  position: relative; /* 位置を相対的にする */
+}
