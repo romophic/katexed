@@ -1,36 +1,10 @@
 "use client"; // 必須
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { BlockMath, InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import MonacoEditor, { loader } from "@monaco-editor/react";
 import html2canvas from 'html2canvas';
-
-loader.init().then(monaco => {
-  // LaTeXのカスタム定義を登録
-  monaco.languages.register({ id: 'latex' });
-
-  // シンタックスハイライトの定義
-  monaco.languages.setMonarchTokensProvider('latex', {
-    tokenizer: {
-      root: [
-        [/\\[a-zA-Z]+/, 'keyword'],   // LaTeXコマンド
-        [/\$.*?\$/, 'string'],        // 数式 (inline math)
-        [/%.*$/, 'comment'],          // コメント
-        [/[{}]/, 'delimiter'],        // 括弧
-      ],
-    },
-  });
-
-  // 言語の設定
-  monaco.languages.setLanguageConfiguration('latex', {
-    brackets: [
-      ['{', '}'],
-      ['(', ')'],
-      ['[', ']'],
-    ],
-  });
-});
 
 export default function Home() {
   const [latexInput, setLatexInput] = useState('i\\hbar \\frac{\\partial}{\\partial t} \\Psi(\\mathbf{r}, t) = \\hat{H} \\Psi(\\mathbf{r}, t)');
@@ -39,7 +13,7 @@ export default function Home() {
   const editorOptions = {
     selectOnLineNumbers: true,
     minimap: {
-      enabled: false,
+      enabled: true,
     },
     automaticLayout: true,
   };
@@ -65,7 +39,6 @@ export default function Home() {
     }
   };
 
-
   const saveAsSVG = () => {
     const svgContent = `
       <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100">
@@ -81,6 +54,34 @@ export default function Home() {
     link.click();
   };
 
+  useEffect(() => {
+    // MonacoEditorの初期化
+    loader.init().then(monaco => {
+      // LaTeXのカスタム定義を登録
+      monaco.languages.register({ id: 'latex' });
+
+      // シンタックスハイライトの定義
+      monaco.languages.setMonarchTokensProvider('latex', {
+        tokenizer: {
+          root: [
+            [/\\[a-zA-Z]+/, 'keyword'],   // LaTeXコマンド
+            [/\$.*?\$/, 'string'],        // 数式 (inline math)
+            [/%.*$/, 'comment'],          // コメント
+            [/[{}]/, 'delimiter'],        // 括弧
+          ],
+        },
+      });
+
+      // 言語の設定
+      monaco.languages.setLanguageConfiguration('latex', {
+        brackets: [
+          ['{', '}'],
+          ['(', ')'],
+          ['[', ']'],
+        ],
+      });
+    });
+  }, []); // 空の依存配列を指定して初回レンダリング時のみ実行
 
   return (
     <div className="flex flex-col h-screen bg-gray-50">
