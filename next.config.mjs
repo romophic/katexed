@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/katex',
-  assetPrefix: '/katex/'
+  basePath: '/katexed',
+  assetPrefix: '/katexed/'
 };
 
 export default nextConfig;
