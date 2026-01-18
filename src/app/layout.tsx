@@ -14,8 +14,32 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Katexed",
-  description: "online katex editor",
+  metadataBase: new URL('https://romophic.github.io/katexed/'),
+  alternates: {
+    canonical: '/',
+  },
+  title: "Katexed - Online LaTeX Equation Editor",
+  description: "A fast, lightweight, and real-time online LaTeX equation editor. Render, preview, and export your mathematical formulas as high-quality PNG or SVG images instantly.",
+  keywords: ["LaTeX", "Editor", "Equation", "Math", "Formula", "KaTeX", "Online", "Generator", "PNG", "SVG", "Export"],
+  authors: [{ name: "romophic", url: "https://romophic.com" }],
+  creator: "romophic",
+  openGraph: {
+    title: "Katexed - Online LaTeX Equation Editor",
+    description: "Write, preview, and export LaTeX equations instantly. The fastest way to create math formulas for your documents and web.",
+    url: "https://romophic.github.io/katexed/",
+    siteName: "Katexed",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Katexed - Online LaTeX Equation Editor",
+    description: "Real-time LaTeX editing and high-quality image export.",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png", // Assuming user might add this later, or we can use default
+  },
 };
 
 export default function RootLayout({
