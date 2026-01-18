@@ -35,7 +35,7 @@ export default async function Image() {
             }}
         >
              {/* Simple Sigma Symbol simulation since we can't easily import lucide icon into edge runtime without raw svg */}
-             <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style={{ color: 'white' }}>
+             <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'white' }}>
                 <path d="M18 7c0-1.1-.9-2-2-2H4l8 7-8 7h12c1.1 0 2-.9 2-2v-2" />
              </svg>
         </div>
